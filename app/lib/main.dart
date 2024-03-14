@@ -8,9 +8,9 @@ Future<void> main() async {
   runApp(const App());
 }
 
-/// This is the main application widget.
+/// [App] This is the main application widget.
 class App extends StatelessWidget {
-  /// Main application constructor.
+  /// [App] Main application constructor.
   const App({super.key});
 
   @override
@@ -23,9 +23,9 @@ class App extends StatelessWidget {
   }
 }
 
-/// This is the home page widget.
+/// [HomePage] This is the home page widget.
 class HomePage extends StatefulWidget {
-  /// Home page constructor.
+  /// [HomePage] Home page constructor.
   const HomePage({required this.title, super.key});
 
   /// The title of the home page.
