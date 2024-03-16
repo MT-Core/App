@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login/flutter_login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// [ShaderCallback] is a function that returns a [Shader] given a [Rect] bounds.
@@ -24,6 +25,36 @@ const String _fontFamily = 'Roboto';
 
 /// [shaderCallback] is a [ShaderCallback] that returns a [RadialGradient] shader.
 ShaderCallback shaderCallback = (Rect bounds) => const RadialGradient(colors: <Color>[Colors.blue, Colors.red], tileMode: TileMode.mirror, radius: 1, center: Alignment.topLeft).createShader(bounds);
+
+/// [loginTheme] is a [LoginTheme] that represents the login theme.
+LoginTheme loginTheme = LoginTheme(
+  switchAuthTextColor: Colors.red,
+  primaryColor: _primaryColor,
+  authButtonPadding: const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 10),
+  textFieldStyle: const TextStyle(color: Colors.white),
+  inputTheme: const InputDecorationTheme(
+    fillColor: Colors.black,
+    filled: true,
+    focusColor: Colors.white,
+    hoverColor: Colors.white,
+    prefixIconColor: Colors.white,
+    suffixIconColor: Colors.white,
+    hintStyle: TextStyle(color: Colors.white),
+    labelStyle: TextStyle(color: Colors.white),
+    prefixStyle: TextStyle(color: Colors.white),
+    suffixStyle: TextStyle(color: Colors.white),
+    helperStyle: TextStyle(color: Colors.white),
+    counterStyle: TextStyle(color: Colors.white),
+    floatingLabelStyle: TextStyle(color: Colors.white),
+  ),
+  buttonStyle: const TextStyle(fontWeight: FontWeight.w500, color: Colors.blue),
+  accentColor: _secondaryColor,
+  errorColor: _errorColor,
+  titleStyle: GoogleFonts.robotoCondensed(fontSize: 40, color: _primaryColor),
+  bodyStyle: const TextStyle(color: _primaryColor),
+  cardTheme: const CardTheme(elevation: 10, shadowColor: _boxShadowColor),
+  buttonTheme: LoginButtonTheme(splashColor: _splashColor, elevation: 10, highlightElevation: 10, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+);
 
 /// [theme] is a [ThemeData] that represents the app theme.
 ThemeData theme = ThemeData(

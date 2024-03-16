@@ -3,10 +3,6 @@ import 'package:app/constants/values.dart';
 import 'package:app/modules/splash/splash.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-
-/// [getIt] is a global instance of [GetIt].
-GetIt getIt = GetIt.instance;
 
 /// [HomePage] is a widget that represents the home page.
 class HomePage extends StatefulWidget {
