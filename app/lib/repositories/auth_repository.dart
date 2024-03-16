@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get_it/get_it.dart';
 
 /// [AuthRepository] is a class that is responsible for handling all the authentication related operations.
 class AuthRepository {

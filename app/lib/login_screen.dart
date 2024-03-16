@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:app/constants/theme.dart';
 import 'package:app/modules/home/home_page.dart';
 import 'package:app/repositories/auth_repository.dart';
@@ -54,7 +52,6 @@ class LoginScreen extends StatelessWidget {
     if (data.name != null && emailValidatorRegister(value: data.name ?? '') != null) return emailValidatorRegister(value: data.name ?? '');
     try {
       await _authRepository.register(username: data.name ?? '', password: data.password ?? '', email: data.name ?? '');
-      // sleep(const Duration(seconds: 2));
       return null;
     } catch (e) {
       return 'An error occured';
@@ -90,17 +87,6 @@ class LoginScreen extends StatelessWidget {
               goBackButton: 'Back',
               confirmPasswordError: 'The passwords do not match',
               recoverPasswordSuccess: 'Go to your email!',
-            ),
-          ),
-          Positioned(
-            top: 60,
-            left: 15,
-            child: FloatingActionButton(
-              mini: true,
-              elevation: 0,
-              backgroundColor: const Color.fromRGBO(33, 150, 243, 0.3),
-              child: const Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () => Navigator.pop(context),
             ),
           ),
         ],
