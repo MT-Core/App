@@ -5,6 +5,7 @@ version: 1.0.0+1
 environment:
   sdk: '>=3.3.1 <4.0.0'
 dependencies:
+  cloud_firestore: ^4.15.10
   cupertino_icons: ^1.0.6
   curved_navigation_bar: ^1.0.3
   firebase_auth: ^4.17.9
