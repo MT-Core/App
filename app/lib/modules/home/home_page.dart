@@ -1,6 +1,7 @@
 import 'package:app/constants/theme.dart';
 import 'package:app/constants/values.dart';
 import 'package:app/modules/splash/splash.dart';
+import 'package:app/modules/gps-call/gps.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget getContent({required int index}) {
     switch (index) {
       case 0:
-        return const SplashPage();
+        return const LocationPage();
       case 1:
         return const SplashPage();
       case 2:
