@@ -1,4 +1,5 @@
 import 'package:app/constants/theme.dart';
+import 'package:app/constants/values.dart';
 import 'package:app/models/user_data.dart';
 import 'package:app/modules/home/home_page.dart';
 import 'package:app/modules/profile/bloc/profile_page_bloc.dart';
@@ -72,7 +73,7 @@ class _AccountViewState extends State<AccountView> {
   void _saveProfile({required UserData user}) => setState(() => localUser = user);
 
   void _onSave() {
-    ScaffoldMessenger.of(context).showSnackBar(customSnackBar(label: 'account.save', notifLabel: 'account.snackbar-update-info'));
+    ScaffoldMessenger.of(context).showSnackBar(customSnackBar(label: 'Confirm', notifLabel: 'Account informations updated'));
     setState(() => bloc.add(UpdateUserEvent(user: localUser)));
   }
 
@@ -120,20 +121,7 @@ class ProfileImage extends StatelessWidget {
               child: SizedBox(
                 width: 100,
                 height: 100,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white54,
-                  backgroundImage: (user.avatarUrl != null) ? NetworkImage(user.avatarUrl!) : Image.asset('assets/img/icononly_transparent_nobuffer_500.png', fit: BoxFit.cover).image,
-                ),
-              ),
-            ),
-            Container(
-              width: 110,
-              height: 110,
-              alignment: Alignment.bottomRight,
-              child: CircleAvatar(
-                radius: 20,
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-                child: IconButton(icon: const Icon(Icons.edit_outlined), color: Theme.of(context).colorScheme.primary, tooltip: 'account.avatar-modify-tooltip', onPressed: () async {}),
+                child: CircleAvatar(backgroundColor: Colors.white54, backgroundImage: NetworkImage(user.avatarUrl.endsWith('.svg') ? Constants.profilePlaceholderUrl : user.avatarUrl)),
               ),
             ),
           ],
@@ -173,15 +161,29 @@ class _ProfilePageAppBarState extends State<ProfilePageAppBar> {
             Row(
               children: <Widget>[
                 const SizedBox(width: 10),
-                ShaderMask(shaderCallback: shaderCallback, child: IconButton(icon: const Icon(Icons.privacy_tip_outlined), onPressed: () => <void>{})),
-                const SizedBox(width: 50),
+                // ShaderMask(shaderCallback: shaderCallback, child: IconButton(icon: const Icon(Icons.privacy_tip_outlined), onPressed: () => <void>{})),
+                // IconButton(icon: const Icon(Icons.save, color: Color.fromRGBO(171, 135, 222, 1)), onPressed: widget.onSaved),
+                InkWell(
+                  onTap: () => widget.onSaved(),
+                  child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      boxShadow: <BoxShadow>[BoxShadow(color: Colors.grey, blurRadius: 5, spreadRadius: 0.2, offset: Offset(0, 4))],
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: ShaderMask(shaderCallback: shaderCallback, child: const Icon(Icons.save, color: Colors.white)),
+                    ),
+                  ),
+                ),
+                // const SizedBox(width: 10),
               ],
             ),
-            Text('account.appbar-title', style: Theme.of(context).textTheme.headlineMedium),
+            Text('My Profile', style: Theme.of(context).textTheme.headlineMedium),
             Row(
               children: <Widget>[
-                IconButton(icon: const Icon(Icons.save, color: Color.fromRGBO(171, 135, 222, 1)), onPressed: widget.onSaved),
-                const SizedBox(width: 10),
+                // const SizedBox(width: 10),
                 SizedBox(
                   width: 42,
                   height: 42,

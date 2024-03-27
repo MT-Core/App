@@ -13,7 +13,7 @@ class ProfilePageBloc extends Bloc<ProfilePageEvent, ProfilePageState> {
     on<UpdateUserEvent>((UpdateUserEvent event, Emitter<ProfilePageState> emit) async => GetIt.I<ProfileRepository>().updateUser(event.user));
     on<FetchUserEvent>((FetchUserEvent event, Emitter<ProfilePageState> emit) async {
       emit(ProfilePageLoadingState());
-      emit(ProfilePageLoadedState(user: (await GetIt.I<ProfileRepository>().getUser()) ?? UserData(email: '', id: '')));
+      emit(ProfilePageLoadedState(user: await GetIt.I<ProfileRepository>().getUser()));
     });
   }
 }

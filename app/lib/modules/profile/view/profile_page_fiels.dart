@@ -47,15 +47,14 @@ class _ProfilePageFieldState extends State<ProfilePageField> {
 
   void saveProfile() {
     _formKey.currentState?.save();
-    // if (_formKey.currentState != null && _formKey.currentState!.validate()) {
-    //   widget.user.firstname = _formKey.currentState?.value['firstname'] ?? '';
-    //   widget.user.lastname = _formKey.currentState?.value['lastname'] ?? '';
-    //   widget.user.age = _formKey.currentState?.value['age'] ?? widget.user.age;
-    //   widget.user.birthdate = _formKey.currentState?.value['birthdate'] ?? widget.user.birthdate;
-    //   widget.user.country = _formKey.currentState?.value['country'] ?? '';
-    //   widget.user.city = _formKey.currentState?.value['city'] ?? '';
-    //   widget.onSaved(user: widget.user);
-    // }
+    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+      widget.user.firstname = _formKey.currentState?.value['firstname'] ?? widget.user.firstname;
+      widget.user.lastname = _formKey.currentState?.value['lastname'] ?? widget.user.lastname;
+      widget.user.age = _formKey.currentState?.value['birthdate'] ?? widget.user.age;
+      widget.user.country = _formKey.currentState?.value['country'] ?? widget.user.country;
+      widget.user.city = _formKey.currentState?.value['city'] ?? widget.user.city;
+      widget.onSaved(user: widget.user);
+    }
   }
 
   InputDecoration getTextDecoration({required String labelText}) =>
@@ -82,7 +81,7 @@ class _ProfilePageFieldState extends State<ProfilePageField> {
                 name: 'email',
                 cursorColor: Theme.of(context).colorScheme.onSecondary,
                 style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-                decoration: getTextDecoration(labelText: 'account.Email-label'),
+                decoration: getTextDecoration(labelText: 'E-mail'),
                 keyboardType: TextInputType.name,
               ),
             ),
@@ -96,7 +95,7 @@ class _ProfilePageFieldState extends State<ProfilePageField> {
                       onChanged: (String? value) => saveProfile(),
                       cursorColor: Theme.of(context).colorScheme.onSecondary,
                       style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-                      decoration: getTextDecoration(labelText: 'account.firstname-label'),
+                      decoration: getTextDecoration(labelText: 'Firstname'),
                       keyboardType: TextInputType.name,
                     ),
                   ),
@@ -107,7 +106,7 @@ class _ProfilePageFieldState extends State<ProfilePageField> {
                       onChanged: (String? value) => saveProfile(),
                       cursorColor: Theme.of(context).colorScheme.onSecondary,
                       style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-                      decoration: getTextDecoration(labelText: 'account.lastname-label'),
+                      decoration: getTextDecoration(labelText: 'Lastname'),
                       keyboardType: TextInputType.name,
                     ),
                   ),
@@ -122,7 +121,7 @@ class _ProfilePageFieldState extends State<ProfilePageField> {
                 cursorColor: Theme.of(context).colorScheme.onSecondary,
                 style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
                 inputType: InputType.date,
-                decoration: getTextDecoration(labelText: 'account.birthdate-label'),
+                decoration: getTextDecoration(labelText: 'Birthdate'),
               ),
             ),
             Container(
@@ -135,7 +134,7 @@ class _ProfilePageFieldState extends State<ProfilePageField> {
                       onChanged: (String? value) => saveProfile(),
                       cursorColor: Theme.of(context).colorScheme.onSecondary,
                       style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-                      decoration: getTextDecoration(labelText: 'account.city-label'),
+                      decoration: getTextDecoration(labelText: 'City'),
                       keyboardType: TextInputType.name,
                     ),
                   ),
@@ -146,7 +145,7 @@ class _ProfilePageFieldState extends State<ProfilePageField> {
                       onChanged: (String? value) => saveProfile(),
                       cursorColor: Theme.of(context).colorScheme.onSecondary,
                       style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-                      decoration: getTextDecoration(labelText: 'account.country-label'),
+                      decoration: getTextDecoration(labelText: 'Country'),
                       keyboardType: TextInputType.name,
                     ),
                   ),
