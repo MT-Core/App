@@ -1,9 +1,10 @@
 import 'package:app/constants/values.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// [UserData] is a model class that contains the user data.
 class UserData {
   /// [UserData] constructor.
-  UserData({required this.id, required this.email, this.avatarUrl, this.firstname, this.lastname, this.age, this.country, this.city});
+  UserData({required this.id, required this.email, required this.avatarUrl, this.firstname, this.lastname, this.age, this.country, this.city});
 
   /// Creates [UserData] instance from JSON.
   factory UserData.fromJson(Map<String, dynamic> json, String uid) {
@@ -26,7 +27,7 @@ class UserData {
   final String email;
 
   /// [avatarUrl] is the user avatar url.
-  String? avatarUrl;
+  String avatarUrl;
 
   /// [firstname] is the user name.
   String? firstname;
@@ -35,7 +36,7 @@ class UserData {
   String? lastname;
 
   ///[age] is the user age.
-  DateTime? age;
+  Timestamp? age;
 
   /// [country] is the user country.
   String? country;
