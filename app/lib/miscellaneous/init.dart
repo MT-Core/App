@@ -10,6 +10,6 @@ class Initializer {
     GetIt.I
       ..registerSingleton(const HomeRepository(), signalsReady: true)
       ..registerSingleton(AuthRepository(), signalsReady: true)
-      ..registerSingleton(const ProfileRepository(), signalsReady: true);
+      ..registerSingleton(ProfileRepository(), signalsReady: true);
   }
 }
