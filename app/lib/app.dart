@@ -48,7 +48,7 @@ class _AppViewState extends State<AppView> {
         canPop: false,
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: appName,
+          title: Constants.appName,
           home: FirebaseAuth.instance.currentUser != null ? const HomePage() : LoginScreen(),
           theme: theme,
           routes: <String, Widget Function(BuildContext)>{HomePage.route: (BuildContext context) => const HomePage()},

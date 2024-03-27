@@ -1,14 +1,16 @@
+import 'package:app/constants/values.dart';
+
 /// [UserData] is a model class that contains the user data.
 class UserData {
   /// [UserData] constructor.
   UserData({required this.id, required this.email, this.avatarUrl, this.firstname, this.lastname, this.age, this.country, this.city});
 
   /// Creates [UserData] instance from JSON.
-  factory UserData.fromJson(Map<String, dynamic> json) {
+  factory UserData.fromJson(Map<String, dynamic> json, String uid) {
     return UserData(
-      id: json['id'],
+      id: uid,
       email: json['email'],
-      avatarUrl: json['avatarUrl'],
+      avatarUrl: json['avatarUrl'] ?? Constants.profilePlaceholderUrl,
       firstname: json['firstname'],
       lastname: json['lastname'],
       age: json['age'],
@@ -33,7 +35,7 @@ class UserData {
   String? lastname;
 
   ///[age] is the user age.
-  int? age;
+  DateTime? age;
 
   /// [country] is the user country.
   String? country;
