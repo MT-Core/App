@@ -1,5 +1,6 @@
 import 'package:app/constants/theme.dart';
 import 'package:app/constants/values.dart';
+import 'package:app/modules/profile/view/profile_page.dart';
 import 'package:app/modules/splash/splash.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       case 2:
         return const SplashPage();
       case 3:
-        return const SplashPage();
+        return const ProfilePage();
       default:
         return const SplashPage();
     }
