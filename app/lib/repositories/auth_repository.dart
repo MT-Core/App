@@ -25,12 +25,9 @@ class AuthRepository {
   }
 
   /// [register] is a method that registers the user.
-  Future<void> register({required String password, required String? username, required String? email}) async {
-    if (username == null && email == null) {
-      throw Exception('Username and email cannot be null');
-    }
+  Future<void> register({required String password, required String email, required String firstname, required String lastname}) async {
     try {
-      _userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email!, password: password);
+      _userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         printError(info: 'The password provided is too weak.');
@@ -38,7 +35,6 @@ class AuthRepository {
         printError(info: 'The account already exists for that email.');
       }
     }
-    // GetIt.I.signalReady(this);
   }
 
   /// [userCredential] returns the user's credential.

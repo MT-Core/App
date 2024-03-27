@@ -51,7 +51,12 @@ class LoginScreen extends StatelessWidget {
   Future<String?> _registerUser({required SignupData data}) async {
     if (data.name != null && emailValidatorRegister(value: data.name ?? '') != null) return emailValidatorRegister(value: data.name ?? '');
     try {
-      await _authRepository.register(username: data.name ?? '', password: data.password ?? '', email: data.name ?? '');
+      await _authRepository.register(
+        password: data.password ?? '',
+        email: data.name ?? '',
+        firstname: data.additionalSignupData!['firstname'] ?? '',
+        lastname: data.additionalSignupData!['lastname'] ?? '',
+      );
       return null;
     } catch (e) {
       return 'An error occured';
@@ -72,6 +77,10 @@ class LoginScreen extends StatelessWidget {
             onSubmitAnimationCompleted: () async => Get.offAll(() => const HomePage()),
             userValidator: (String? value) => emailValidator(value: value ?? ''),
             passwordValidator: (String? value) => passwordValidator(value: value ?? ''),
+            additionalSignupFields: <UserFormField>[
+              UserFormField(keyName: 'firstname', displayName: 'firstname', fieldValidator: (String? value) => value!.isEmpty ? 'firstname empty' : null, userType: LoginUserType.firstName),
+              UserFormField(keyName: 'lastname', displayName: 'lastname', fieldValidator: (String? value) => value!.isEmpty ? 'lastname empty' : null, userType: LoginUserType.lastName),
+            ],
             theme: loginTheme,
             footer: 'Epitech project',
             messages: LoginMessages(
