@@ -1,4 +1,5 @@
 import 'package:app/repositories/auth_repository.dart';
+import 'package:app/repositories/gps_repository.dart';
 import 'package:app/repositories/home_repository.dart';
 import 'package:get_it/get_it.dart';
 
@@ -8,6 +9,7 @@ class Initializer {
   static Future<void> init() async {
     GetIt.I
       ..registerSingleton(const HomeRepository(), signalsReady: true)
-      ..registerSingleton(AuthRepository(), signalsReady: true);
+      ..registerSingleton(AuthRepository(), signalsReady: true)
+      ..registerSingleton(GpsRepository(), signalsReady: true);
   }
 }
